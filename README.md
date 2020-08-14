@@ -1,4 +1,4 @@
-This project uses react-redux and redux-thunk middleware to process async requests.
+This project uses react-redux, axios and redux-thunk middleware to handle async requests.
 
 
 General data loading with Redux:
