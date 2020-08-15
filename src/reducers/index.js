@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import postsReducer from "./postsReducer";
+import usersReducer from "./usersReducer";
 
 // Rules of Reducers:
 // 1. Must return any value besides "undefined"
@@ -10,4 +11,5 @@ import postsReducer from "./postsReducer";
 // store state is defined here
 export default combineReducers({
   posts: postsReducer,
+  users: usersReducer,
 });
