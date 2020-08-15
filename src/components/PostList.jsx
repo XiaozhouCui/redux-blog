@@ -8,6 +8,7 @@ class PostList extends Component {
     this.props.fetchPosts();
   }
   render() {
+    console.log(this.props.posts);
     return (
       <div>
         Post List
@@ -16,8 +17,14 @@ class PostList extends Component {
   }
 }
 
+// reducer will update store state with action.payload
+// map state.posts to this.props.posts
+const mapStateToProps = (state) => {
+  return { posts: state.posts };
+}
 
 export default connect(
-  null, // if we don't have mapStateToProps(), then pass "null" as first argument
+  // null, // if we don't have mapStateToProps(), then pass "null" as first argument
+  mapStateToProps,
   { fetchPosts } // add action creator to this.props
 )(PostList);

@@ -12,12 +12,12 @@ import jsonPlaceholder from "../apis/jsonPlaceholder";
 //   };
 // };
 
-// redux-thunk approach (need to hookup thunk at root level)
+// redux-thunk approach (need to hookup first at root level)
 export const fetchPosts = () => {
   // instead of returning an action boject, fetchPosts() can return a function
   return async (dispatch) => {
     const response = await jsonPlaceholder.get("/posts");
     // manually call the dispatch function
-    dispatch({ type: "FETCH_POSTS", payload: response });
+    dispatch({ type: "FETCH_POSTS", payload: response.data }); // "FETCH_POSTS" action will be dispatched to postsReducer
   };
 };
