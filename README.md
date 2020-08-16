@@ -1,4 +1,4 @@
-This project uses react-redux, axios and redux-thunk middleware to handle async requests.
+This simple project uses react-redux, axios and redux-thunk middleware to handle async requests on JsonPlaceholder.
 
 
 General data loading with Redux:
