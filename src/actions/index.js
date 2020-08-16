@@ -1,5 +1,5 @@
 // Action creators
-
+import _ from "lodash";
 import jsonPlaceholder from "../apis/jsonPlaceholder";
 
 // Bad approach with axios alone!!!
@@ -24,9 +24,14 @@ export const fetchPosts = () => {
 
 // get user by id, passing 2 parameters by Currying
 export const fetchUser = (id) => {
-  return async (dispatch) => {
-    const response = await jsonPlaceholder.get(`/users/${id}`);
-    // dispatch the fetch user action
-    dispatch({ type: "FETCH_USER", payload: response.data });
+  return (dispatch) => {
+    _fetchUser(id, dispatch);
   }
 }
+
+// to prevent making repeative api calls (10 times for each user ID), use lodash memoize funcion to wrap the action
+const _fetchUser = _.memoize(async (id, dispatch) => {
+  const response = await jsonPlaceholder.get(`/users/${id}`);
+  // dispatch the fetch user action
+  dispatch({ type: "FETCH_USER", payload: response.data });
+});
